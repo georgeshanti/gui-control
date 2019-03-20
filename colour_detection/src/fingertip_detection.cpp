@@ -62,10 +62,26 @@ void FingertipDetectionModule::thresh_callback() {
             current.distanceAndDirectionFrom(h,distance,direction);
         string str = string("Position: ") + to_string(h.x) + string(" ") + to_string(h.y);
         string str1 = string("Distance: ") + to_string(distance);
-        string str2 = string("Direction: ") + to_string(direction);
+        string str2;
+        switch (direction)
+        {
+            case 1: str2 = "Direction: Left";
+                break;
+            case 2: str2 = "Direction: Right";
+                break;
+            case 3: str2 = "Direction: Up";
+                break;
+            case 4: str2 = "Direction: Down";
+                break;
+            default: str2 = "Direction: No Motion";
+                break;
+        }
+        str += " " + to_string(direction);
+        string str3 = string("No of fingers: ") + to_string(h.fingers);
         putText(pic, str,cv::Point(25,25), FONT_HERSHEY_SIMPLEX, 0.5,    cv::Scalar(255),1,8,false);
         putText(pic, str1,cv::Point(25,50), FONT_HERSHEY_SIMPLEX, 0.5,    cv::Scalar(255),1,8,false);
-        putText(pic, str2,cv::Point(25,75), FONT_HERSHEY_SIMPLEX, 0.5,    cv::Scalar(255),1,8,false);
+        putText(pic, str3,cv::Point(25,75), FONT_HERSHEY_SIMPLEX, 0.5,    cv::Scalar(255),1,8,false);
+        putText(pic, str2,cv::Point(25,100), FONT_HERSHEY_SIMPLEX, 0.5,    cv::Scalar(255),1,8,false);
     }
     else{
         string str = string("Not enough!!");
