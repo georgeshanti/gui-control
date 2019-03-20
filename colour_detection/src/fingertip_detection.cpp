@@ -89,6 +89,6 @@ void FingertipDetectionModule::thresh_callback() {
     }
     imshow( "Stats", pic);
 
-    imshow( "Hull demo", drawing );
+    imshow( "Convex Hull", drawing );
     imshow( "Points", moms);
 }

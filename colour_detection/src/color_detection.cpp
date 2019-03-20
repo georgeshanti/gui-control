@@ -24,10 +24,15 @@ void ColorDetectionModule::showTrackbars() {
 
 void ColorDetectionModule::getColor() {
     Mat imgHSV;
-    cvtColor(frame, imgHSV, COLOR_BGR2HSV);
+    Mat f;
+    pMOG2->apply(frame, mask);
+    frame.copyTo(f, mask);
+    imshow("MOG Mask", mask);
+    imshow("Foreground", f);
+    cvtColor(f, imgHSV, COLOR_BGR2HSV);
     inRange(imgHSV, Scalar(iLowH, iLowS, iLowV), Scalar(iHighH, iHighS, iHighV), color);
     // inRange(imgHSV, Scalar(19, 24, 83), Scalar(86, 142, 255), colour);
-    imshow("EdgeFeed", color);
+    imshow("Detected Color", color);
 
     ftdm.thresh_callback();
 }

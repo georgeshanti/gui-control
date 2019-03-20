@@ -16,7 +16,7 @@
   // Read the image from file (replace the image file name in your code)
 
 cv::Mat imgIn = cv::imread("red_eyes.jpg");
-
+std::cout<<imgIn<<"\n";
 //Check if the image is empty
 
 if ( imgIn.empty() )
@@ -42,6 +42,7 @@ std::cout<<sumImg<<"Hello";
 //normalise by the number of pixes in the image to obtain an extimate for the illuminant
 
 cv::Scalar illum=sumImg/(imgIn.rows*imgIn.cols);
+std::cout<<"Illum: "<<illum<<"\n";
 
 // Split the image into different channels
 
@@ -61,6 +62,8 @@ cv::Mat blueImg=rgbChannels[0];
 //calculate scale factor for normalisation you can use 255 instead
 
 double scale=(illum(0)+illum(1)+illum(2))/3;
+std::cout<<"Illums: "<<illum(0)<<" "<<illum(1)<<" "<<illum(2)<<"\n";
+std::cout<<"Scale: "<<scale<<"\n";
 
 //correct for illuminant (white balancing)
 

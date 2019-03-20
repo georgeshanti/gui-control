@@ -10,8 +10,10 @@ class ColorDetectionModule {
 
     int iLowH, iHighH, iLowS, iHighS, iLowV, iHighV;
     Mat& frame;
-    Mat color;
+    Mat color, mask;
     FingertipDetectionModule ftdm;
+    // Ptr<BackgroundSubtractor> pMOG2 = createBackgroundSubtractorMOG2();
+    Ptr<BackgroundSubtractor> pMOG2 = createBackgroundSubtractorMOG2(50);
 
     int thresh = 100;
     int max_thresh = 255;
@@ -20,7 +22,7 @@ class ColorDetectionModule {
     public:
     bool color_set=false;
 
-    ColorDetectionModule(Mat &a) : iLowH(0), iHighH(179), iLowS(0),iHighS(255),iLowV(0),iHighV(255),frame(a),color(),ftdm(color) {}
+    ColorDetectionModule(Mat &a) : iLowH(0), iHighH(179), iLowS(0),iHighS(255),iLowV(0),iHighV(255),frame(a),color(),mask(),ftdm(color) {}
     void setHSVColors(Mat image);
     void colorSelect(Mat image);
     void showTrackbars();
