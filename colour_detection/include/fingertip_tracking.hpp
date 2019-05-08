@@ -8,6 +8,7 @@
 
 #define BUFFER_SIZE 10
 #define DISTANCE_THRESHOLD 1
+#define JITTER_TOLERANCE 5
 
 using namespace cv;
 

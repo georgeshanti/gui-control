@@ -8,8 +8,8 @@ Hand::Hand(Fingertip fingertips[], int number):cv::Point(){
         for(int i=0;i<number;i++){
             acc +=fingertips[i];
         }
-        x = acc.x/number;
-        y = acc.y/number;
+        x = acc.x / number;
+        y = acc.y / number;
     }
         fingers = number;
 }
